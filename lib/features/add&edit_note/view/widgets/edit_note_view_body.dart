@@ -7,7 +7,6 @@ import '../../../../core/helper/my_responsive.dart';
 
 class EditNoteViewBody extends StatelessWidget {
   const EditNoteViewBody({super.key});
-
   static final TextEditingController titleController = TextEditingController();
   static final TextEditingController contentController =
       TextEditingController();
