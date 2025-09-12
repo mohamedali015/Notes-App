@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/core/helper/my_responsive.dart';
-import 'package:notes/core/shared_widgets/app_elevated_button.dart';
-import 'package:notes/core/shared_widgets/app_text_field.dart';
+import 'package:notes/core/helper/my_snackbar.dart';
 import 'package:notes/features/add&edit_note/manager/add_note_cubit/add_note_cubit.dart';
 
-import '../../../core/utils/app_strings.dart';
+import '../manager/add_note_cubit/add_note_state.dart';
+import 'widgets/add_note_form.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -17,46 +17,22 @@ class AddNoteBottomSheet extends StatelessWidget {
       child: Padding(
         padding: MyResponsive.paddingSymmetric(context,
             horizontal: 16, vertical: 10),
-        child: AddNoteForm(),
-      ),
-    );
-  }
-}
-
-class AddNoteForm extends StatelessWidget {
-  const AddNoteForm({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    AddNoteCubit addNoteCubit = AddNoteCubit.get(context);
-    return Form(
-      key: addNoteCubit.formKey,
-      autovalidateMode: addNoteCubit.autoValidateMode,
-      child: Column(
-        children: [
-          Text(
-            AppStrings.addNote,
-            style: Theme.of(context).textTheme.headlineSmall,
+        child: SingleChildScrollView(
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteSuccess) {
+                Navigator.pop(context);
+                MySnackbar.success(context, "Note Added Successfully");
+              }
+              if (state is AddNoteFailure) {
+                MySnackbar.error(context, state.errorMessage);
+              }
+            },
+            builder: (context, state) {
+              return const AddNoteForm();
+            },
           ),
-          SizedBox(height: MyResponsive.height(context, value: 24)),
-          AppTextField(
-            hint: AppStrings.title,
-            controller: addNoteCubit.titleController,
-          ),
-          SizedBox(height: MyResponsive.height(context, value: 16)),
-          AppTextField(
-            hint: AppStrings.content,
-            controller: addNoteCubit.contentController,
-            maxLines: 5,
-          ),
-          SizedBox(height: MyResponsive.height(context, value: 28)),
-          AppElevatedButton(
-            buttonText: AppStrings.addNote,
-            onPressed: () {},
-          )
-        ],
+        ),
       ),
     );
   }

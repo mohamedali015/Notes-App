@@ -7,4 +7,5 @@ abstract class AppColors {
   static Color subBlack = Colors.black.withAlpha(120);
   static const Color white = Colors.white;
   static const Color red = Color(0xFFFF0000);
+  static const Color green = Colors.green;
 }

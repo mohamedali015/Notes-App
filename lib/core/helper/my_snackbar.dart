@@ -11,7 +11,7 @@ abstract class MySnackbar {
 
   static void success(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: AppColors.primary),
+      SnackBar(content: Text(message), backgroundColor: AppColors.green),
     );
   }
 }
