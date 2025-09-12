@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/shared_widgets/custom_app_bar.dart';
+import '../../../../core/utils/app_strings.dart';
 import 'notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
@@ -15,7 +16,10 @@ class NotesViewBody extends StatelessWidget {
           SizedBox(
             height: MyResponsive.height(context, value: 55),
           ),
-          CustomAppBar(),
+          CustomAppBar(
+            title: AppStrings.notes,
+            icon: Icons.search,
+          ),
           Expanded(child: NotesListView()),
         ],
       ),
