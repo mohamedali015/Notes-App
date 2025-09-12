@@ -20,7 +20,7 @@ class CustomIcon extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 28,
+          size: MyResponsive.width(context, value: 26),
         ),
       ),
     );

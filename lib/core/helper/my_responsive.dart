@@ -35,4 +35,8 @@ abstract class MyResponsive {
       bottom: height(context, value: bottom ?? 0),
     );
   }
+
+  static EdgeInsets paddingAll(context, {required double value}) {
+    return EdgeInsets.all(width(context, value: value));
+  }
 }
