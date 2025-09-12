@@ -52,7 +52,7 @@ class AppTextField extends StatelessWidget {
   }
 
   TextStyle _textStyle(BuildContext context) {
-    return AppTextStyles.Regular_W400_10(context);
+    return AppTextStyles.Regular_W400_14(context);
   }
 
   InputBorder _border(BuildContext context, Color color) {
