@@ -23,8 +23,8 @@ class AppTextField extends StatelessWidget {
           context,
           AppValidator.field,
         );
-      case TextFieldType.subTitle:
-        return _subTitleField(context, AppValidator.field);
+      case TextFieldType.content:
+        return _contentField(context, AppValidator.field);
     }
   }
 
@@ -35,9 +35,8 @@ class AppTextField extends StatelessWidget {
   }) {
     return InputDecoration(
       hintText: hint,
-      // hintStyle:
-      // AppTextStyles.Medium_W500_12(context, color: AppColors.darkGray),
-      // errorStyle: AppTextStyles.Medium_W500_12(context, color: AppColors.red),
+      // hintStyle: TextStyle(color: AppColors.primary),
+      // errorStyle: TextStyle(color: AppColors.red),
 
       contentPadding: EdgeInsets.symmetric(
         vertical: MyResponsive.height(context, value: 20),
@@ -46,7 +45,7 @@ class AppTextField extends StatelessWidget {
       border: _border(context, AppColors.primary),
       focusedErrorBorder: _border(context, AppColors.red),
       focusedBorder: _border(context, AppColors.primary),
-      enabledBorder: _border(context, AppColors.primary),
+      enabledBorder: _border(context, AppColors.white),
       errorBorder: _border(context, AppColors.red),
     );
   }
@@ -58,7 +57,7 @@ class AppTextField extends StatelessWidget {
   InputBorder _border(BuildContext context, Color color) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.all(
-        Radius.circular(MyResponsive.width(context, value: 10)),
+        Radius.circular(MyResponsive.width(context, value: 8)),
       ),
       borderSide: BorderSide(color: color, width: 1),
     );
@@ -75,13 +74,14 @@ class AppTextField extends StatelessWidget {
       validator: validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.name,
+      cursorColor: AppColors.primary,
       decoration: _inputDecoration(
         context,
       ),
     );
   }
 
-  Widget _subTitleField(
+  Widget _contentField(
     BuildContext context,
     String? Function(String?)? validator,
   ) {
@@ -90,7 +90,8 @@ class AppTextField extends StatelessWidget {
       style: _textStyle(context),
       validator: validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.multiline,
+      cursorColor: AppColors.primary,
       decoration: _inputDecoration(
         context,
       ),
@@ -98,4 +99,4 @@ class AppTextField extends StatelessWidget {
   }
 }
 
-enum TextFieldType { title, subTitle }
+enum TextFieldType { title, content }
