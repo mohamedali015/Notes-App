@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/core/utils/app_colors.dart';
 
-import '../../add_note/view/add_note_bottom_sheet.dart';
+import '../../add&edit_note/view/add_note_bottom_sheet.dart';
 import 'widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
