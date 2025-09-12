@@ -45,11 +45,12 @@ class AppElevatedButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        buttonText,
-        // style: AppTextStyles.SemiBold_W600_20(context,
-        //     color: foregroundColor ?? AppColors.white),
-      ),
+      child: Text(buttonText,
+          style: TextStyle(
+            color: AppColors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          )),
     );
   }
 }

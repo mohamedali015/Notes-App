@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/core/helper/my_responsive.dart';
+import 'package:notes/core/shared_widgets/app_elevated_button.dart';
 import 'package:notes/core/shared_widgets/app_text_field.dart';
 
 import '../../../core/utils/app_strings.dart';
@@ -33,6 +34,11 @@ class AddNoteBottomSheet extends StatelessWidget {
             controller: contentController,
             maxLines: 5,
           ),
+          SizedBox(height: MyResponsive.height(context, value: 28)),
+          AppElevatedButton(
+            buttonText: AppStrings.addNote,
+            onPressed: () {},
+          )
         ],
       ),
     );
