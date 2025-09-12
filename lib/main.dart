@@ -7,6 +7,7 @@ import 'core/utils/app_strings.dart';
 import 'core/utils/app_theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(AppConstants.kNotesBox);
   runApp(const MyApp());
