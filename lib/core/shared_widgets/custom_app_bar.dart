@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes/core/utils/app_strings.dart';
-import 'package:notes/core/utils/app_text_styles.dart';
-
 import 'custom_icons.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -13,7 +11,11 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text(
           AppStrings.notes,
-          style: AppTextStyles.SemiBold_W600_24(context),
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).textTheme.bodyLarge!.color,
+          ),
         ),
         const Spacer(),
         CustomIcon(

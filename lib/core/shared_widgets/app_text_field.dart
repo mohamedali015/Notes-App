@@ -3,29 +3,30 @@ import 'package:notes/core/shared_widgets/app_validator.dart';
 
 import '../helper/my_responsive.dart';
 import '../utils/app_colors.dart';
-import '../utils/app_text_styles.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
-    required this.type,
     required this.controller,
+    required this.hint,
+    this.maxLines = 1,
   });
 
-  final TextFieldType type;
+  final String hint;
   final TextEditingController controller;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
-    switch (type) {
-      case TextFieldType.title:
-        return _titleField(
-          context,
-          AppValidator.field,
-        );
-      case TextFieldType.content:
-        return _contentField(context, AppValidator.field);
-    }
+    return TextFormField(
+      controller: controller,
+      validator: AppValidator.field,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      keyboardType: TextInputType.name,
+      cursorColor: AppColors.primary,
+      maxLines: maxLines,
+      decoration: _inputDecoration(context, hint: hint),
+    );
   }
 
   ///////////////////////--Decorations//////////////////////
@@ -35,9 +36,6 @@ class AppTextField extends StatelessWidget {
   }) {
     return InputDecoration(
       hintText: hint,
-      // hintStyle: TextStyle(color: AppColors.primary),
-      // errorStyle: TextStyle(color: AppColors.red),
-
       contentPadding: EdgeInsets.symmetric(
         vertical: MyResponsive.height(context, value: 20),
         horizontal: MyResponsive.width(context, value: 10),
@@ -50,10 +48,6 @@ class AppTextField extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(BuildContext context) {
-    return AppTextStyles.Regular_W400_14(context);
-  }
-
   InputBorder _border(BuildContext context, Color color) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.all(
@@ -62,41 +56,4 @@ class AppTextField extends StatelessWidget {
       borderSide: BorderSide(color: color, width: 1),
     );
   }
-
-  /////////////////////////--TextFields////////////////////////////////
-  Widget _titleField(
-    BuildContext context,
-    String? Function(String?)? validator,
-  ) {
-    return TextFormField(
-      controller: controller,
-      style: _textStyle(context),
-      validator: validator,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: TextInputType.name,
-      cursorColor: AppColors.primary,
-      decoration: _inputDecoration(
-        context,
-      ),
-    );
-  }
-
-  Widget _contentField(
-    BuildContext context,
-    String? Function(String?)? validator,
-  ) {
-    return TextFormField(
-      controller: controller,
-      style: _textStyle(context),
-      validator: validator,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: TextInputType.multiline,
-      cursorColor: AppColors.primary,
-      decoration: _inputDecoration(
-        context,
-      ),
-    );
-  }
 }
-
-enum TextFieldType { title, content }
