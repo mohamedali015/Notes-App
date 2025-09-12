@@ -11,7 +11,7 @@ class NoteItem extends StatelessWidget {
       padding:
           MyResponsive.paddingSymmetric(context, horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-          color: AppColors.yellow, borderRadius: BorderRadius.circular(8)),
+          color: AppColors.itemColor, borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

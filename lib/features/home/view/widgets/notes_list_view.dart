@@ -12,7 +12,7 @@ class NotesListView extends StatelessWidget {
       itemCount: 3,
       itemBuilder: (context, index) {
         return Padding(
-          padding: MyResponsive.paddingSymmetric(context, vertical: 8),
+          padding: MyResponsive.paddingSymmetric(context, vertical: 4),
           child: NoteItem(),
         );
       },
