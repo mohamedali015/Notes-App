@@ -43,7 +43,8 @@ class AddNoteForm extends StatelessWidget {
               buttonText: AppStrings.addNote,
               onPressed: addNoteCubit.onPressedAddTask,
             ),
-          )
+          ),
+          SizedBox(height: MyResponsive.height(context, value: 24)),
         ],
       ),
     );

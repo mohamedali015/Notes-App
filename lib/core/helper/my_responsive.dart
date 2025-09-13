@@ -27,12 +27,14 @@ abstract class MyResponsive {
     double? right,
     double? top,
     double? bottom,
+    bool useRawBottom = false,
   }) {
     return EdgeInsets.only(
       left: width(context, value: left ?? 0),
       right: width(context, value: right ?? 0),
       top: height(context, value: top ?? 0),
-      bottom: height(context, value: bottom ?? 0),
+      bottom:
+          useRawBottom ? (bottom ?? 0) : height(context, value: bottom ?? 0),
     );
   }
 

@@ -15,6 +15,7 @@ class NotesView extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             showDragHandle: true,
+            isScrollControlled: true,
             context: context,
             builder: (context) {
               return AddNoteBottomSheet();
