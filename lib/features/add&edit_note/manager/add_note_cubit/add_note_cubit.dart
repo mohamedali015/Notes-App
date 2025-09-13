@@ -18,6 +18,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   int currentIndex = 0;
+  Color currentColor = AppColors.itemColors[0];
 
   AddNoteRepo addNoteRepo = AddNoteRepo();
 
@@ -32,7 +33,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
           title: titleController.text,
           subTitle: contentController.text,
           date: formatedDate.toString(),
-          color: AppColors.itemColor.value,
+          color: currentColor.value,
         );
 
         addNoteRepo.addNote(note);
@@ -53,6 +54,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   colorPicker(int index) {
     currentIndex = index;
+    currentColor = AppColors.itemColors[index];
     emit(AddNotePickedColor());
   }
 }
