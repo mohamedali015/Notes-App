@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../helper/my_responsive.dart';
 import 'custom_icons.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            fontSize: 28,
+            fontSize: MyResponsive.fontSize(context, value: 28),
             fontWeight: FontWeight.bold,
             color: Theme.of(context).textTheme.bodyLarge!.color,
           ),
