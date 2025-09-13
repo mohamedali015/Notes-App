@@ -15,4 +15,8 @@ class NotesRepo {
     var notesBox = Hive.box<NoteModel>(AppConstants.kNotesBox);
     return notesBox.values.toList();
   }
+
+  void deleteNote(NoteModel note) {
+    note.delete();
+  }
 }

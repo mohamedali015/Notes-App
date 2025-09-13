@@ -4,7 +4,6 @@ import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/shared_widgets/custom_app_bar.dart';
 import 'package:notes/features/home/manager/notes_cubit/notes_cubit.dart';
 import 'package:notes/features/home/manager/notes_cubit/notes_state.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
 import 'notes_list_view.dart';
 
@@ -27,30 +26,9 @@ class NotesViewBody extends StatelessWidget {
               title: AppStrings.notes,
               icon: Icons.search,
             ),
-            notesCubit.notes == null
-                ? Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "There are No Notes yet,\nPress the button\nTo add New Note",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                        SizedBox(
-                          height: MyResponsive.height(context, value: 16),
-                        ),
-                        Image.asset(
-                          AppAssets.emptyNotes,
-                          width: double.infinity,
-                        ),
-                      ],
-                    ),
-                  )
-                : Expanded(
-                    child: NotesListView(),
-                  ),
+            Expanded(
+              child: NotesListView(),
+            ),
           ],
         ),
       ),

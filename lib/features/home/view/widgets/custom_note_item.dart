@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/utils/app_colors.dart';
 import 'package:notes/features/home/data/model/note_model.dart';
+import 'package:notes/features/home/manager/notes_cubit/notes_cubit.dart';
 
 import '../../../add&edit_note/view/edit_note_view.dart';
 
@@ -52,7 +53,10 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Delete note
+                    NotesCubit.get(context).deleteNote(note);
+                  },
                   icon: Icon(
                     Icons.delete,
                     color: AppColors.black,
