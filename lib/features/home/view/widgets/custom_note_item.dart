@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/utils/app_colors.dart';
+import 'package:notes/features/home/data/model/note_model.dart';
 
 import '../../../add&edit_note/view/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +28,14 @@ class NoteItem extends StatelessWidget {
         padding: MyResponsive.paddingSymmetric(context,
             horizontal: 16, vertical: 16),
         decoration: BoxDecoration(
-            color: AppColors.itemColor, borderRadius: BorderRadius.circular(8)),
+            color: Color(note.color!), borderRadius: BorderRadius.circular(8)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
-                "Flutter Tips",
+                note.title,
                 style: TextStyle(
                   color: AppColors.black,
                   fontSize: MyResponsive.fontSize(context, value: 26),
@@ -41,7 +44,7 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: MyResponsive.paddingOnly(context, top: 8),
                 child: Text(
-                  "Build your career with Flutter",
+                  note.subTitle,
                   style: TextStyle(
                     color: AppColors.subBlack,
                     fontSize: MyResponsive.fontSize(context, value: 18),
@@ -60,7 +63,7 @@ class NoteItem extends StatelessWidget {
               height: MyResponsive.height(context, value: 8),
             ),
             Text(
-              "May 20, 2024",
+              note.date,
               style: TextStyle(
                 color: AppColors.subBlack,
               ),
