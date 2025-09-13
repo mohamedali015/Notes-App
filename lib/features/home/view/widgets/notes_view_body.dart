@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/shared_widgets/custom_app_bar.dart';
 import 'package:notes/features/home/manager/notes_cubit/notes_cubit.dart';
@@ -13,8 +12,6 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NotesCubit notesCubit = NotesCubit.get(context);
-    // notesCubit.getNotes();
     return Padding(
       padding: MyResponsive.paddingSymmetric(context, horizontal: 24),
       child: BlocBuilder<NotesCubit, NotesState>(
