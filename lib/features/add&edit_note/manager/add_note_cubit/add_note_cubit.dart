@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes/core/utils/app_colors.dart';
 import 'package:notes/features/add&edit_note/data/repo/add_note_repo.dart';
 import 'package:notes/features/home/data/model/note_model.dart';
@@ -23,10 +24,12 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       emit(AddNoteLoading());
       try {
         // Add note logic here
+        var currentDate = DateTime.now();
+        var formatedDate = DateFormat("MMM-dd, yyyy").format(currentDate);
         NoteModel note = NoteModel(
           title: titleController.text,
           subTitle: contentController.text,
-          date: DateTime.now().toString(),
+          date: formatedDate.toString(),
           color: AppColors.itemColor.value,
         );
 

@@ -34,7 +34,7 @@ class NotesViewBody extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "There are no tasks yet,\nPress the button\nTo add New Task",
+                          "There are No Notes yet,\nPress the button\nTo add New Note",
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
