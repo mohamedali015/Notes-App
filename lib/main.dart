@@ -12,10 +12,11 @@ import 'features/home/manager/bloc_observer/simple_bloc_observer.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
-  await Hive.openBox(AppConstants.kNotesBox);
+
+  Bloc.observer = SimpleBlocObserver();
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>(AppConstants.kNotesBox);
   runApp(const MyApp());
 }
 

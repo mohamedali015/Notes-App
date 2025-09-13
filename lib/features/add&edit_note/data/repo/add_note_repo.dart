@@ -12,7 +12,11 @@ class AddNoteRepo {
   factory AddNoteRepo() => instance;
 
   void addNote(NoteModel note) async {
-    var notesBox = Hive.box<NoteModel>(AppConstants.kNotesBox);
-    await notesBox.add(note);
+    try {
+      var notesBox = Hive.box<NoteModel>(AppConstants.kNotesBox);
+      await notesBox.add(note);
+    } catch (e) {
+      throw Exception('Failed to add note: $e');
+    }
   }
 }
