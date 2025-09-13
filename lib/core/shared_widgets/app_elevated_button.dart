@@ -11,6 +11,7 @@ class AppElevatedButton extends StatelessWidget {
   final double? buttonWidth;
   final String buttonText;
   final VoidCallback? onPressed;
+  final bool isLoading;
 
   const AppElevatedButton({
     super.key,
@@ -21,6 +22,7 @@ class AppElevatedButton extends StatelessWidget {
     this.buttonWidth,
     required this.buttonText,
     required this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -45,12 +47,20 @@ class AppElevatedButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(buttonText,
-          style: TextStyle(
-            color: AppColors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          )),
+      child: isLoading
+          ? SizedBox(
+              height: MyResponsive.height(context, value: 25),
+              width: MyResponsive.height(context, value: 25),
+              child: const CircularProgressIndicator(
+                color: AppColors.black,
+              ),
+            )
+          : Text(buttonText,
+              style: TextStyle(
+                color: AppColors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              )),
     );
   }
 }

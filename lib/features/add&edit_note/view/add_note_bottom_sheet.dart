@@ -16,7 +16,7 @@ class AddNoteBottomSheet extends StatelessWidget {
       create: (context) => AddNoteCubit(),
       child: Padding(
         padding: MyResponsive.paddingSymmetric(context,
-            horizontal: 16, vertical: 10),
+            horizontal: 16, vertical: 16),
         child: SingleChildScrollView(
           child: BlocConsumer<AddNoteCubit, AddNoteState>(
             listener: (context, state) {
@@ -29,7 +29,10 @@ class AddNoteBottomSheet extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return const AddNoteForm();
+              return AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true : false,
+                child: const AddNoteForm(),
+              );
             },
           ),
         ),

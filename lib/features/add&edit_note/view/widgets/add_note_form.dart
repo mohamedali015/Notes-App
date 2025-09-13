@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/core/helper/my_responsive.dart';
 import 'package:notes/core/shared_widgets/app_elevated_button.dart';
 import 'package:notes/core/shared_widgets/app_text_field.dart';
 import 'package:notes/features/add&edit_note/manager/add_note_cubit/add_note_cubit.dart';
 
 import '../../../../core/utils/app_strings.dart';
+import '../../manager/add_note_cubit/add_note_state.dart';
 
 class AddNoteForm extends StatelessWidget {
   const AddNoteForm({
@@ -35,9 +37,12 @@ class AddNoteForm extends StatelessWidget {
             maxLines: 5,
           ),
           SizedBox(height: MyResponsive.height(context, value: 28)),
-          AppElevatedButton(
-            buttonText: AppStrings.addNote,
-            onPressed: addNoteCubit.onPressedAddTask,
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) => AppElevatedButton(
+              isLoading: state is AddNoteLoading ? true : false,
+              buttonText: AppStrings.addNote,
+              onPressed: addNoteCubit.onPressedAddTask,
+            ),
           )
         ],
       ),
