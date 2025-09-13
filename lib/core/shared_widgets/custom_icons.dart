@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import '../helper/my_responsive.dart';
 
 class CustomIcon extends StatelessWidget {
-  const CustomIcon({super.key, required this.icon});
+  const CustomIcon({super.key, required this.icon, this.onTap});
 
   final IconData icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: MyResponsive.width(context, value: 45),
         height: MyResponsive.height(context, value: 45),

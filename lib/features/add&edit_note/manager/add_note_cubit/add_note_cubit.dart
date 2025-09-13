@@ -17,6 +17,8 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
+  int currentIndex = 0;
+
   AddNoteRepo addNoteRepo = AddNoteRepo();
 
   void onPressedAddTask() async {
@@ -42,5 +44,15 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       autoValidateMode = AutovalidateMode.always;
       return;
     }
+  }
+
+  editNote(NoteModel note) {
+    titleController.text = note.title;
+    contentController.text = note.subTitle;
+  }
+
+  colorPicker(int index) {
+    currentIndex = index;
+    emit(AddNotePickedColor());
   }
 }

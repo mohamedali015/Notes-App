@@ -11,3 +11,5 @@ class AddNoteFailure extends AddNoteState {
 
   AddNoteFailure(this.errorMessage);
 }
+
+class AddNotePickedColor extends AddNoteState {}

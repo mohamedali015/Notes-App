@@ -15,9 +15,11 @@ class NotesCubit extends Cubit<NotesState> {
 
   void getNotes() {
     notes = notesRepo.getNotes();
+    emit(NotesSuccess());
   }
 
   void deleteNote(NoteModel note) {
     notesRepo.deleteNote(note);
+    getNotes();
   }
 }
