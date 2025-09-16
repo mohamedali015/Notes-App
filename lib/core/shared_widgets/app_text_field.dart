@@ -22,7 +22,7 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       validator: AppValidator.field,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.multiline,
       cursorColor: AppColors.primary,
       maxLines: maxLines,
       decoration: _inputDecoration(context, hint: hint),
